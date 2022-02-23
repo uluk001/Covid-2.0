@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %} Covid {% endblock %}
+    
+{% block content %}
+<style>
+.h1h1{
+    font-family: serif;
+}
+</style>
+<div class="container">
+    <form action="/search/" method="POST" class="input-group mb-3 mt-5">
+        {% csrf_token %}
+        <input type="text" class="form-control" placeholder="Называние страны" aria-label="Recipient's username" aria-describedby="button-addon2"  name="covid">
+        <button class="btn btn-outline-secondary" type="sumbit" id="button-addon2">Поиск</button>
+    </form>
+</div>
+{% if population > 0 %}
+<div class="results">
+    <div class="container">
+        <h1 class="text-center mt-5 h1h1">Covid-19</h1>
+        <div class="alert alert-dark" role="alert">
+        <div class="my_city">
+            <form action="main/" method="POST"></form>
+            <div class="first">
+                <h5 class="temp">Страна:{{country}}</h5>
+                </div>
+                <p class="p1">Подтвержденные:{{confirmed}}<br>Вылечились:{{recovered}}</p>
+                <div class="second">
+                    <p class="p1">Летальные исходы:{{deaths}}<br>Население:{{population}}</p>
+                </div>  
+                <div class="www">
+                    <h3>{{name}}</h3>
+                    <h4>{{discription}}</h4>
+                    <h3>{{population11}}</h3>
+                </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+<!-- <ul class="list-group">
+    <li class="list-group-item">{{finish}}</li>
+</ul> -->
+<p>{{finish}}</p>
+{% endblock %}
